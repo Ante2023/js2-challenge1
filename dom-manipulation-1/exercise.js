@@ -18,17 +18,17 @@ Write JavaScript below that logs:
 
 const pNodes = document.querySelectorAll("p");
 if(pNodes.length === 6){
-   console.log(pNodes)
+//    console.log(pNodes)
 }
 
 const firstDiv = document.querySelector(".site-header");
-console.log(firstDiv);
+// console.log(firstDiv);
 
 const jumboText = document.querySelector("#jumbotron-text")
-console.log(jumboText);
+// console.log(jumboText);
 
 const primaryElements = document.querySelectorAll(".primary-content p")
-console.log(primaryElements)
+// console.log(primaryElements)
 
 
 /*
@@ -38,6 +38,10 @@ Task 2
 When a user clicks the 'ALERT' button, an alert box should pop up with the text "Thanks for visiting Bikes for Refugees!"
 */
 
+document.querySelector('#alertBtn')
+    .addEventListener('click',
+        ()=>alert("Thanks for visiting Bikes for Refugees!")
+    )
 
 /*
 Task 3
@@ -45,6 +49,12 @@ Task 3
 
 Write JavaScript below that changes the background colour of the page when the 'Change colour' button is clicked.
 */
+
+document.querySelector('#bgrChangeBtn')
+    .addEventListener('click',
+        ()=>{
+            document.querySelector('body').style.background="red"
+        })
 
 
 /*
@@ -55,14 +65,29 @@ When a user clicks the ‘Add some text’ button, a new paragraph should be add
 */
 
 
+// document.querySelector('#addArticleBtn').addEventListener('click',()=>{
+
+//     const pElement = document.createElement('p')
+//     const articleElemet = document.createElement('article')
+
+//     pElement.textContent = document.querySelector('.form-control').value
+
+//     articleElemet.appendChild(pElement)
+//     document.querySelector('#mainArticles').appendChild(articleElemet)
+// })
+
 
 /*
-Task 5
+Task 5s
 ======
 
 When the 'Larger links!' button is clicked, the text of all links on the page should increase.
 */
-
+document.querySelector('#largerLinksBtn').addEventListener('click',()=>{
+    document.querySelectorAll('.article-title').forEach(link=>{
+        link.innerHTML = link.innerHTML.toUpperCase()
+    })
+})
 
 /*
 Task 6
@@ -72,7 +97,21 @@ Using the same function in Task 4,
 When the 'Add' button is clicked, get the text inside the input field and create a new paragraph in the "LEARN MORE" section
 Also clear the text inside the input field
 */
+document.querySelector('#addArticleBtn').addEventListener('click',()=>{
 
+    const pElement = document.createElement('p')
+    const articleElemet = document.createElement('article')
+
+    const inputElement = document.querySelector('.form-control')
+    const inputValue = inputElement.value
+    const temp = inputValue
+    inputElement.value=''
+    pElement.value=temp
+    console.log(pElement);
+
+    articleElemet.appendChild(pElement)
+    document.querySelector('#mainArticles').appendChild(articleElemet)
+})
 /*
 Task 7
 ======
